@@ -1,0 +1,17 @@
+services:
+  - type: web
+    name: docreview-backend
+    runtime: docker
+    rootDir: backend
+    dockerfilePath: ./Dockerfile
+    envVars:
+      - key: JWT_SECRET
+        generateValue: true
+      - key: DB_PATH
+        value: /data/docreview.db
+      - key: CORS_ORIGINS
+        value: "*"
+    disk:
+      name: sqlite-data
+      mountPath: /data
+      sizeGB: 1
